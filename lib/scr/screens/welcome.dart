@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:trevel_app/scr/screens/about.dart';
 import 'package:trevel_app/scr/screens/signin.dart';
+import 'package:trevel_app/scr/screens/signup.dart';
 
 import 'home.dart';
 
@@ -77,6 +78,72 @@ class Welcome extends StatelessWidget {
                       height: 10,
                     ),
 
+                    Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: <Widget>[
+                          MaterialButton(
+                              onPressed: () {
+
+
+                                Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (BuildContext context) => Signin()), (Route<dynamic> route) => false);
+                              },
+
+                              color: new Color.fromRGBO(227, 51, 35, 1),
+                              minWidth: MediaQuery.of(context).size.width * 0.2,
+                              height: MediaQuery.of(context).size.height * 0.03,
+
+
+
+//                                padding: const EdgeInsets.only(left:25.0,right:25.0,top:15.0,bottom:15.0),
+                              child: Text(
+                                "Sign in",
+                                textScaleFactor: 1,
+                                style: TextStyle(
+                                    fontSize:MediaQuery.of(context).size.height * 0.02,
+
+                                    color: Colors.white,
+//                                      fontWeight: FontWeight.bold,
+                                    height: 1.0),
+                              ),
+
+
+
+                            ),
+
+
+
+                           MaterialButton(
+                              onPressed: () {
+
+
+                                Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (BuildContext context) => Signup()), (Route<dynamic> route) => false);
+                              },
+
+                              minWidth: MediaQuery.of(context).size.width * 0.2,
+                              height: MediaQuery.of(context).size.height * 0.03,
+
+
+                              color: Colors.white,
+
+//                                padding: const EdgeInsets.only(left:25.0,right:25.0,top:15.0,bottom:15.0),
+                              child: Text(
+                                "Sign up",
+                                textScaleFactor: 1,
+                                style: TextStyle(
+                                    fontSize:MediaQuery.of(context).size.height * 0.02,
+
+                                    color:new Color.fromRGBO(227, 51, 35, 1) ,
+//                                      fontWeight: FontWeight.bold,
+                                    height: 1.0),
+                              ),
+
+
+
+                            ),
+
+
+                        ],
+                      ),
 
                     Align(
                         alignment: Alignment.topRight,
@@ -215,7 +282,7 @@ class Welcome extends StatelessWidget {
                               mainAxisAlignment:MainAxisAlignment.start,
                               children: <Widget>[
                                 MaterialButton(
-                                  onPressed: () {                              Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (BuildContext context) => Signin()), (Route<dynamic> route) => false);
+                                  onPressed: () {                              Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (BuildContext context) => Signup()), (Route<dynamic> route) => false);
                                   },
                                   color: Colors.transparent,
                                   textColor: new Color.fromRGBO(227, 51, 35, 1),
@@ -239,7 +306,7 @@ class Welcome extends StatelessWidget {
 
 
                     SizedBox(
-                        height: MediaQuery.of(context).size.height * 0.04
+                        height: MediaQuery.of(context).size.height * 0.01
                     ),
 
 

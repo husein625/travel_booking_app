@@ -3,6 +3,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:search_page/search_page.dart';
 import 'package:trevel_app/scr/models/places.dart';
+import 'package:trevel_app/scr/screens/signin.dart';
+import 'package:trevel_app/scr/screens/signup.dart';
 import 'package:trevel_app/scr/screens/welcome.dart';
 import 'package:trevel_app/scr/widgets/images_cards.dart';
 
@@ -116,6 +118,74 @@ resizeToAvoidBottomInset: false,
                       shape: CircleBorder()
                   ),
 
+                  SizedBox(width: MediaQuery.of(context).size.width * 0.3),
+
+
+                  Row(
+                    children: <Widget>[
+                      MaterialButton(
+                        onPressed: () {
+
+
+                          Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (BuildContext context) => Signin()), (Route<dynamic> route) => false);
+                        },
+
+                        color: new Color.fromRGBO(227, 51, 35, 1),
+                        minWidth: MediaQuery.of(context).size.width * 0.2,
+                        height: MediaQuery.of(context).size.height * 0.03,
+
+
+
+//                                padding: const EdgeInsets.only(left:25.0,right:25.0,top:15.0,bottom:15.0),
+                        child: Text(
+                          "Sign in",
+                          textScaleFactor: 1,
+                          style: TextStyle(
+                              fontSize:MediaQuery.of(context).size.height * 0.02,
+
+                              color: Colors.white,
+//                                      fontWeight: FontWeight.bold,
+                              height: 1.0),
+                        ),
+
+
+
+                      ),
+
+
+
+                      MaterialButton(
+                        onPressed: () {
+
+
+                          Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (BuildContext context) => Signup()), (Route<dynamic> route) => false);
+                        },
+
+                        minWidth: MediaQuery.of(context).size.width * 0.2,
+                        height: MediaQuery.of(context).size.height * 0.03,
+
+
+                        color: Colors.white,
+
+//                                padding: const EdgeInsets.only(left:25.0,right:25.0,top:15.0,bottom:15.0),
+                        child: Text(
+                          "Sign up",
+                          textScaleFactor: 1,
+                          style: TextStyle(
+                              fontSize:MediaQuery.of(context).size.height * 0.02,
+
+                              color:new Color.fromRGBO(227, 51, 35, 1) ,
+//                                      fontWeight: FontWeight.bold,
+                              height: 1.0),
+                        ),
+
+
+
+                      ),
+
+
+                    ],
+                  ),
 
 
 //                 Container(
@@ -126,6 +196,9 @@ resizeToAvoidBottomInset: false,
                 ],
               ),
 //              SizedBox(height: MediaQuery.of(context).size.height * 0.07),
+
+
+
 
               Container(
 
@@ -241,6 +314,7 @@ resizeToAvoidBottomInset: false,
 //                child: SearchBar( hintText: "Have a destination in mind?",hintStyle: TextStyle(fontSize: 15,  color: Colors.black45,
 //                ),),
 //              ),
+
 
               Padding(
                 padding:  EdgeInsets.only( bottom: MediaQuery.of(context).viewInsets.bottom),
