@@ -7,10 +7,14 @@ import 'package:trevel_app/scr/screens/signin.dart';
 import 'package:trevel_app/scr/screens/signup.dart';
 import 'package:trevel_app/scr/screens/welcome.dart';
 import 'package:trevel_app/scr/widgets/images_cards.dart';
+import 'package:trevel_app/scr/widgets/listTile_search.dart';
 
 class Home extends StatefulWidget {
+  Place get place => null;
+
+
   @override
-  _HomeState createState() => _HomeState();
+  _HomeState createState() => _HomeState(place);
 }
 //Future<List<Place>> search(String search) async {
 //  await Future.delayed(Duration(seconds: 2));
@@ -22,6 +26,8 @@ class Home extends StatefulWidget {
 //  });
 //}
 class _HomeState extends State<Home> {
+  final Place place;
+_HomeState(this.place);
   List<Place> places = [
     Place(name: 'Maglić', image: 'maglic.jpg', days: 7, price: 1100),
     Place(name: 'Bjelašnica', image: 'bjelasnica.jpg', days: 12, price: 1200),
@@ -96,6 +102,7 @@ resizeToAvoidBottomInset: false,
             children: <Widget>[
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,
+
                 children: <Widget>[
                   SizedBox(height: MediaQuery.of(context).size.height * 0.15),
 
@@ -315,18 +322,121 @@ resizeToAvoidBottomInset: false,
 //                ),),
 //              ),
 
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Container(
+                height: 50,
+                width: 350,
+                color: Colors.grey[300],
+                child:     Align(
+                  alignment: Alignment.topLeft,
+                  child: Row(
+                    children: [
+                      IconButton(
+                          onPressed: () => showSearch(
+                            context: context,
+                            delegate: SearchPage<Place>(
+                              items: places,
+                              searchLabel: 'Search place',
+                              suggestion: ListTileSearch(),
+                              failure: Center(
+                                child: Text('No person found :('),
+                              ),
+                              filter: (place) => [
+                                place.name,
+                                place.days.toString(),
+                                place.price.toString(),
+                              ],
+                              builder: (place) => ListTile(
+                                title: Text(place.name),
+                                subtitle: Text('${place.days} days'),
+                                trailing: Text('${place.price} €'),
+                                leading: ConstrainedBox(
+                                  constraints: BoxConstraints(
+                                    minWidth: 54,
+                                    minHeight: 44,
+                                    maxWidth: 64,
+                                    maxHeight: 64,
+                                  ),
+                                  child: Image.asset('images/${place.image}', fit: BoxFit.cover),
+                                ),
+                              ),
+                            ),
+                          ),
+                          icon: Icon(Icons.search),
 
-              Padding(
-                padding:  EdgeInsets.only( bottom: MediaQuery.of(context).viewInsets.bottom),
-                child: SizedBox(
-                    width: 300,
-                    height: 80,
-                    child: SearchBar(
-                      hintText: "Have a destination in mind?",hintStyle: TextStyle(fontSize: 15,  color: Colors.black45,
-                    ),
-                    )
+                        ),
+                      MaterialButton(
+                        onPressed: () => showSearch(
+                          context: context,
+                          delegate: SearchPage<Place>(
+                            barTheme: ThemeData(
+                            ),
+                            items: places,
+                            searchLabel: 'Search place',
+                            suggestion:Center(),
+                            failure: Center(
+                              child: Text('No person found :('),
+                            ),
+                            filter: (place) => [
+                              place.name,
+                              place.days.toString(),
+                              place.price.toString(),
+                            ],
+                            builder: (place) => ListTile(
+                              title: Text(place.name),
+                              subtitle: Text('${place.days} days'),
+                              trailing: Text('${place.price} €'),
+                              leading: ConstrainedBox(
+                                constraints: BoxConstraints(
+                                  minWidth: 54,
+                                  minHeight: 44,
+                                  maxWidth: 64,
+                                  maxHeight: 64,
+                                ),
+                                child: Image.asset('images/${place.image}', fit: BoxFit.cover),
+                              ),
+                            ),
+                          ),
+                        ),
+                        minWidth: MediaQuery.of(context).size.width * 0.3,
+                        height: MediaQuery.of(context).size.height * 0.06,
+
+
+
+//                                padding: const EdgeInsets.only(left:25.0,right:25.0,top:15.0,bottom:15.0),
+                        child: Text(
+                          "Have a destination in mind?",
+                          textScaleFactor: 1,
+                          style: TextStyle(
+                              fontSize:MediaQuery.of(context).size.height * 0.023,
+
+                              color: Colors.black45,
+//                                      fontWeight: FontWeight.bold,
+                              ),
+                        ),
+
+
+
+                      ),
+                    ],
+                  ),
+                ),
                 ),
               ),
+
+
+//              Padding(
+//                padding:  EdgeInsets.only( bottom: MediaQuery.of(context).viewInsets.bottom),
+//                child: SizedBox(
+//                    width: 300,
+//                    height: 80,
+//                    child: SearchBar(
+//                      hintText: "Have a destination in mind?",hintStyle: TextStyle(fontSize: 15,  color: Colors.black45,
+//                    ),
+//                    )
+//                ),
+//              ),
 
               Expanded(child: Container(child: ImageCards())),
 

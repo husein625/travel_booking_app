@@ -1,8 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:trevel_app/scr/screens/about.dart';
 import 'package:trevel_app/scr/screens/signin.dart';
 import 'package:trevel_app/scr/screens/signup.dart';
+import 'package:trevel_app/scr/widgets/chewie_video.dart';
 
 import 'home.dart';
 
@@ -10,9 +12,14 @@ class Welcome extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+//    SystemChrome.setPreferredOrientations([
+//      DeviceOrientation.portraitUp,
+//      DeviceOrientation.portraitDown,
+//    ]);
     final screenSize = MediaQuery.of(context).size;
     return Scaffold(
-      body:Container(
+        resizeToAvoidBottomInset: false,
+        body:Container(
         width: screenSize.width,
         height: screenSize.height,
         constraints: BoxConstraints.expand(),
@@ -20,9 +27,9 @@ class Welcome extends StatelessWidget {
         children: <Widget>[
           Image.asset(
             'images/mmaglic.jpg',
-       fit: BoxFit.fill,
+            fit: BoxFit.fill,
             height: double.infinity,
-         width: double.infinity,
+            width: double.infinity,
           ),
           Align(
             alignment: Alignment.bottomCenter,
@@ -59,24 +66,12 @@ class Welcome extends StatelessWidget {
 
 
        Column(
-             mainAxisAlignment: MainAxisAlignment.start,
+             mainAxisAlignment: MainAxisAlignment.end,
                   children: <Widget>[
 
-                    Align(
-                        alignment: Alignment.topLeft,
-                            child:IconButton(
-                              icon: Image.asset('icons/BIH.png'),
-                              iconSize: MediaQuery.of(context).size.height*0.015,
-                              onPressed: () { Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (BuildContext context) => Home()), (Route<dynamic> route) => false);
-                              },
-                            ),
-
-                    ),
 
 
-                    SizedBox(
-                      height: 10,
-                    ),
+
 
                     Row(
                         mainAxisAlignment: MainAxisAlignment.start,
@@ -282,16 +277,25 @@ class Welcome extends StatelessWidget {
                               mainAxisAlignment:MainAxisAlignment.start,
                               children: <Widget>[
                                 MaterialButton(
-                                  onPressed: () {                              Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (BuildContext context) => Signup()), (Route<dynamic> route) => false);
-                                  },
-                                  color: Colors.transparent,
-                                  textColor: new Color.fromRGBO(227, 51, 35, 1),
+                                    onPressed: () {
+                                      Navigator.push(
+                                          context,
+                                          PageRouteBuilder(
+                                              transitionDuration: Duration(seconds: 2),
+                                              pageBuilder: (_, __, ___) => ChewieDemo()));
 
-                                  child: Icon(
-                                    Icons.play_circle_outline,
-                                    size: MediaQuery.of(context).size.height * 0.06,
-                                  ),
-                            shape: CircleBorder()
+                                    },
+                                    color: Colors.transparent,
+                                    textColor: new Color.fromRGBO(227, 51, 35, 1),
+
+                                    child: Hero(
+                                      tag: "profile-image",
+                                      child: Icon(
+                                        Icons.play_circle_outline,
+                                        size: MediaQuery.of(context).size.height * 0.06,
+                                      ),
+                                    ),
+                                    shape: CircleBorder()
                                 ),
                                 Text(
                                   "Watch reel",
@@ -422,7 +426,12 @@ class Welcome extends StatelessWidget {
                       ),
                     ),
 
-                      ],)
+                      ],),
+                    SizedBox(
+                      height: 20,
+                    ),
+
+
                   ],
                 ),
         ],
