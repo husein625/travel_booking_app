@@ -232,24 +232,9 @@ class About extends StatelessWidget {
 
 
               Column(
-                mainAxisAlignment: MainAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.end,
                 children: <Widget>[
 
-                  Align(
-                    alignment: Alignment.topLeft,
-                    child:IconButton(
-                      icon: Image.asset('icons/bih.png'),
-                      iconSize: MediaQuery.of(context).size.height*0.015,
-                      onPressed: () { Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (BuildContext context) => Home()), (Route<dynamic> route) => false);
-                      },
-                    ),
-
-                  ),
-
-
-                  SizedBox(
-                      height: MediaQuery.of(context).size.height * 0.07
-                  ),
 
 
                   Align(
@@ -365,9 +350,19 @@ class About extends StatelessWidget {
                                   fontSize:MediaQuery.of(context).size.height * 0.025,
                                   color: Colors.white,
                                   fontWeight: FontWeight.bold),
-                            )
+                            ),
+
+                            SizedBox(
+                                height: 40,
+                            ),
+
+
                           ],
                         ),
+                  SizedBox(
+                    height: 40,
+                  ),
+
 
 
 

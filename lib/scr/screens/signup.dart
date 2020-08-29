@@ -99,7 +99,7 @@ class _SignupState extends State<Signup> {
                           Padding(
                             padding: const EdgeInsets.only(left:8.0),
                             child: Text(
-                              "Don't have an account?",
+                              "Already have an account?",
                               textScaleFactor: 1,
                               style: TextStyle(
                                   fontSize:MediaQuery.of(context).size.height * 0.02,
@@ -347,7 +347,6 @@ class _SignupState extends State<Signup> {
                         ),
                         child: MaterialButton(
                           onPressed: () {
-                            Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (BuildContext context) => Home()), (Route<dynamic> route) => false);
                           },
                           color: new Color.fromRGBO(227, 51, 35, 1),
                           minWidth:  double.infinity,

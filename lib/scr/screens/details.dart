@@ -103,19 +103,27 @@ class _DetailsState extends State<Details> {
 
               Align(
                 alignment: Alignment.centerLeft,
-                child: MaterialButton(
-                              onPressed: () {
-//                              Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (BuildContext context) => About()), (Route<dynamic> route) => false);
-                              },
-                              color: Colors.transparent,
-                              textColor: new Color.fromRGBO(227, 51, 35, 1),
+                child:     MaterialButton(
+                    onPressed: () {
+                      // Navigator.push(
+                      //     context,
+                      //     PageRouteBuilder(
+                      //         transitionDuration: Duration(seconds: 2),
+                      //         pageBuilder: (_, __, ___) => ChewieDemoDetails()));
 
-                              child: Icon(
-                                Icons.play_circle_outline,
-                                size: MediaQuery.of(context).size.height * 0.06,
-                              ),
-                              shape: CircleBorder()
-                          ),
+                    },
+                    color: Colors.transparent,
+                    textColor: new Color.fromRGBO(227, 51, 35, 1),
+
+                    child: Hero(
+                      tag: "profile-image",
+                      child: Icon(
+                        Icons.play_circle_outline,
+                        size: MediaQuery.of(context).size.height * 0.06,
+                      ),
+                    ),
+                    shape: CircleBorder()
+                ),
               ),
               SizedBox(
                 height: 5,

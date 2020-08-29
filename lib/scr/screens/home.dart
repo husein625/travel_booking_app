@@ -8,6 +8,7 @@ import 'package:trevel_app/scr/screens/signup.dart';
 import 'package:trevel_app/scr/screens/welcome.dart';
 import 'package:trevel_app/scr/widgets/images_cards.dart';
 import 'package:trevel_app/scr/widgets/listTile_search.dart';
+import 'package:trevel_app/scr/widgets/list_tile_searches.dart';
 
 class Home extends StatefulWidget {
   Place get place => null;
@@ -374,7 +375,7 @@ resizeToAvoidBottomInset: false,
                             ),
                             items: places,
                             searchLabel: 'Search place',
-                            suggestion:Center(),
+                            suggestion:ListTileSearches(),
                             failure: Center(
                               child: Text('No person found :('),
                             ),
