@@ -133,9 +133,10 @@ resizeToAvoidBottomInset: false,
                     children: <Widget>[
                       MaterialButton(
                         onPressed: () {
-
-
-                          Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (BuildContext context) => Signin()), (Route<dynamic> route) => false);
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => Signin()),
+                          );
                         },
 
                         color: new Color.fromRGBO(227, 51, 35, 1),
@@ -163,11 +164,13 @@ resizeToAvoidBottomInset: false,
 
 
                       MaterialButton(
-                        onPressed: () {
 
-
-                          Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (BuildContext context) => Signup()), (Route<dynamic> route) => false);
-                        },
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => Signup()),
+                            );
+                          },
 
                         minWidth: MediaQuery.of(context).size.width * 0.2,
                         height: MediaQuery.of(context).size.height * 0.03,
@@ -339,7 +342,7 @@ resizeToAvoidBottomInset: false,
                             delegate: SearchPage<Place>(
                               items: places,
                               searchLabel: 'Search place',
-                              suggestion: ListTileSearch(),
+                              suggestion: ListTileSearches(),
                               failure: Center(
                                 child: Text('No person found :('),
                               ),
@@ -400,21 +403,23 @@ resizeToAvoidBottomInset: false,
                             ),
                           ),
                         ),
-                        minWidth: MediaQuery.of(context).size.width * 0.3,
+                        minWidth: MediaQuery.of(context).size.width * 0.1,
                         height: MediaQuery.of(context).size.height * 0.06,
 
 
 
 //                                padding: const EdgeInsets.only(left:25.0,right:25.0,top:15.0,bottom:15.0),
-                        child: Text(
-                          "Have a destination in mind?",
-                          textScaleFactor: 1,
-                          style: TextStyle(
-                              fontSize:MediaQuery.of(context).size.height * 0.023,
+                        child: Center(
+                          child: Text(
+                            "Have a destination in mind?",
+                            textScaleFactor: 1,
+                            style: TextStyle(
+                                fontSize:MediaQuery.of(context).size.height * 0.02,
 
-                              color: Colors.black45,
+                                color: Colors.black45,
 //                                      fontWeight: FontWeight.bold,
-                              ),
+                                ),
+                          ),
                         ),
 
 

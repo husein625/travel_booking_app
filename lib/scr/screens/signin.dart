@@ -64,7 +64,7 @@ class _SigninState extends State<Signin> {
                 alignment: Alignment.topLeft,
                 child: MaterialButton(
                     onPressed: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (_)=>Welcome()));
+                      Navigator.pop(context);
                     },
                     color:  new Color.fromRGBO(227, 51, 35, 1),
                     textColor: new Color.fromRGBO(227, 51, 35, 1),

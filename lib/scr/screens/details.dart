@@ -79,7 +79,7 @@ class _DetailsState extends State<Details> {
                alignment: Alignment.topLeft,
                child: MaterialButton(
                    onPressed: () {
-                     Navigator.push(context, MaterialPageRoute(builder: (_)=>Home()));
+                     Navigator.pop(context);
                    },
                    color:  new Color.fromRGBO(227, 51, 35, 1),
                    textColor: new Color.fromRGBO(227, 51, 35, 1),

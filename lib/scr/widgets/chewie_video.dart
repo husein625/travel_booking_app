@@ -30,7 +30,7 @@ class _ChewieDemoState extends State<ChewieDemo> {
     _videoPlayerController1 = VideoPlayerController.asset('images/timelapse.mp4');
     _chewieController = ChewieController(
       videoPlayerController: _videoPlayerController1,
-      aspectRatio: 3 / 2,
+      // aspectRatio: 3 / 2,
       autoPlay: true,
       looping: true,
     );

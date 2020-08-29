@@ -77,13 +77,14 @@ class Welcome extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: <Widget>[
                           MaterialButton(
-                              onPressed: () {
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(builder: (context) => Signin()),
+                              );
+                            },
 
-
-                                Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (BuildContext context) => Signin()), (Route<dynamic> route) => false);
-                              },
-
-                              color: new Color.fromRGBO(227, 51, 35, 1),
+                            color: new Color.fromRGBO(227, 51, 35, 1),
                               minWidth: MediaQuery.of(context).size.width * 0.2,
                               height: MediaQuery.of(context).size.height * 0.03,
 
@@ -108,13 +109,15 @@ class Welcome extends StatelessWidget {
 
 
                            MaterialButton(
-                              onPressed: () {
+                             onPressed: () {
+                               Navigator.push(
+                                 context,
+                                 MaterialPageRoute(builder: (context) => Signup()),
+                               );
+                             },
 
 
-                                Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (BuildContext context) => Signup()), (Route<dynamic> route) => false);
-                              },
-
-                              minWidth: MediaQuery.of(context).size.width * 0.2,
+                             minWidth: MediaQuery.of(context).size.width * 0.2,
                               height: MediaQuery.of(context).size.height * 0.03,
 
 

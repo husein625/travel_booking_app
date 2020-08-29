@@ -22,18 +22,18 @@ class ListTileSearch extends StatelessWidget {
         },
         child: Card(
           child: ListTile(
-            leading:  Image.asset(
-              "images/$picture",
-// height:100,
-// width: 180,
-// fit: BoxFit.cover,
+            title: Text(place.name),
+            subtitle: Text('${place.days} days'),
+            trailing: Text('${place.price} €'),
+            leading: ConstrainedBox(
+              constraints: BoxConstraints(
+                minWidth: 54,
+                minHeight: 44,
+                maxWidth: 64,
+                maxHeight: 64,
+              ),
+              child: Image.asset('images/${place.image}', fit: BoxFit.cover),
             ),
-            title: Text('$name'),
-            subtitle: Text('$days'),
-            trailing: Text('$price'),
-            // isThreeLine: true,
-
-
           ),
         ),
       ),
