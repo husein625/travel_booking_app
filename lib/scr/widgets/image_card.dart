@@ -9,8 +9,9 @@ class ImageCard extends StatelessWidget {
   final Place place;
   final String description;
   final int price;
+  final String video;
 
-  ImageCard({@required this.name,@required this.days,@required this.picture, this.place, @required this.description, @required this.price});
+  ImageCard({@required this.name,@required this.days,@required this.picture, this.place, @required this.description, @required this.price, @required this.video});
 
   @override
   Widget build(BuildContext context) {

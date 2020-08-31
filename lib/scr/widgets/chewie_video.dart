@@ -3,22 +3,27 @@ import 'package:chewie/chewie.dart';
 import 'package:chewie/src/chewie_player.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:trevel_app/scr/models/places.dart';
+import 'package:trevel_app/scr/screens/details.dart';
 import 'package:trevel_app/scr/screens/welcome.dart';
 import 'package:video_player/video_player.dart';
 
 
 class ChewieDemo extends StatefulWidget {
-  ChewieDemo({this.title = 'Chewie Demo'});
+  ChewieDemo(this.place);
 
-  final String title;
+  final Place place;
 
   @override
   State<StatefulWidget> createState() {
-    return _ChewieDemoState();
+    return _ChewieDemoState(place);
   }
 }
 
 class _ChewieDemoState extends State<ChewieDemo> {
+  final Place place;
+_ChewieDemoState(this.place);
+
   TargetPlatform _platform;
   VideoPlayerController _videoPlayerController1;
   VideoPlayerController _videoPlayerController2;
@@ -27,10 +32,10 @@ class _ChewieDemoState extends State<ChewieDemo> {
   @override
   void initState() {
     super.initState();
-    _videoPlayerController1 = VideoPlayerController.asset('images/timelapse.mp4');
+    _videoPlayerController1 = VideoPlayerController.asset('images/${place.video}');
     _chewieController = ChewieController(
       videoPlayerController: _videoPlayerController1,
-      // aspectRatio: 3 / 2,
+      aspectRatio: 3 / 2,
       autoPlay: true,
       looping: true,
     );
@@ -47,12 +52,7 @@ class _ChewieDemoState extends State<ChewieDemo> {
   @override
   Widget build(BuildContext context) {
     final screenSize = MediaQuery.of(context).size;
-    return MaterialApp(
-      title: widget.title,
-      theme: ThemeData.light().copyWith(
-        platform: _platform ?? Theme.of(context).platform,
-      ),
-      home: Scaffold(
+    return  Scaffold(
 
 
         body: Container(
@@ -66,7 +66,7 @@ color: Colors.blueGrey[100] ),
               Stack(
                 children: [
                   Image.asset(
-                    'images/mmaglic.jpg',
+                    'images/${place.image}',
                     fit: BoxFit.fill,
                     height: double.infinity,
                     width: double.infinity,
@@ -136,12 +136,36 @@ color: Colors.blueGrey[100] ),
 
 
 
-                  Hero(
-                    tag: "profile-image",
-                    child: Chewie(
-                      controller: _chewieController,
+                  Align(
+                    alignment: Alignment.topCenter,
+                    child: Row(
+                      children: [
+                        SizedBox(
+                          height: MediaQuery.of(context).size.height * 0.3,
+                        ),
+
+                        Padding(
+                          padding: const EdgeInsets.only(left:8.0),
+                          child: Text(
+                            "${place.name}",
+                            textScaleFactor: 1,
+                            style: TextStyle(
+                                fontSize: MediaQuery.of(context).size.height * 0.06,
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                                height: 1.0),
+                          ),
+                        ),
+                      ],
                     ),
                   ),
+
+                  Hero(
+                      tag: "profile-image",
+                      child: Chewie(
+                        controller: _chewieController,
+                      ),
+                    ),
 
 
 
@@ -152,13 +176,14 @@ color: Colors.blueGrey[100] ),
                         SizedBox(
                           height: MediaQuery.of(context).size.height * 0.3,
                         ),
+
                         MaterialButton(
                             onPressed: () {
                               Navigator.push(
                                   context,
                                   PageRouteBuilder(
                                       transitionDuration: Duration(seconds: 2),
-                                      pageBuilder: (_, __, ___) => Welcome()));                  },
+                                      pageBuilder: (_, __, ___) => Details(place)));                  },
                             color:  new Color.fromRGBO(227, 51, 35, 1),
                             textColor: new Color.fromRGBO(227, 51, 35, 1),
 
@@ -180,7 +205,6 @@ color: Colors.blueGrey[100] ),
                 ],
               ),
         ),
-      ),
     );
   }
 }

@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:trevel_app/scr/screens/about.dart';
 import 'package:trevel_app/scr/screens/signin.dart';
 import 'package:trevel_app/scr/screens/signup.dart';
+import 'package:trevel_app/scr/widgets/chewie_promo_video.dart';
 import 'package:trevel_app/scr/widgets/chewie_video.dart';
 
 import 'home.dart';
@@ -285,7 +286,7 @@ class Welcome extends StatelessWidget {
                                           context,
                                           PageRouteBuilder(
                                               transitionDuration: Duration(seconds: 2),
-                                              pageBuilder: (_, __, ___) => ChewieDemo()));
+                                              pageBuilder: (_, __, ___) => ChewiePromo()));
 
                                     },
                                     color: Colors.transparent,

@@ -2,6 +2,7 @@ import 'package:flappy_search_bar/flappy_search_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:trevel_app/scr/models/places.dart';
+import 'package:trevel_app/scr/widgets/chewie_video.dart';
 
 import 'home.dart';
 
@@ -79,7 +80,11 @@ class _DetailsState extends State<Details> {
                alignment: Alignment.topLeft,
                child: MaterialButton(
                    onPressed: () {
-                     Navigator.pop(context);
+                     Navigator.push(
+                         context,
+                         PageRouteBuilder(
+                             pageBuilder: (_, __, ___) => Home()));
+
                    },
                    color:  new Color.fromRGBO(227, 51, 35, 1),
                    textColor: new Color.fromRGBO(227, 51, 35, 1),
@@ -105,11 +110,11 @@ class _DetailsState extends State<Details> {
                 alignment: Alignment.centerLeft,
                 child:     MaterialButton(
                     onPressed: () {
-                      // Navigator.push(
-                      //     context,
-                      //     PageRouteBuilder(
-                      //         transitionDuration: Duration(seconds: 2),
-                      //         pageBuilder: (_, __, ___) => ChewieDemoDetails()));
+                      Navigator.push(
+                          context,
+                          PageRouteBuilder(
+                              transitionDuration: Duration(seconds: 2),
+                              pageBuilder: (_, __, ___) => ChewieDemo(place)));
 
                     },
                     color: Colors.transparent,

@@ -116,9 +116,11 @@ class _SigninState extends State<Signin> {
 
                           MaterialButton(
                             onPressed: () {
-                              Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (BuildContext context) => Signup()), (Route<dynamic> route) => false);
-
-                            },
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(builder: (context) => Signin()),
+                              );
+                              },
 //                                padding: const EdgeInsets.only(left:25.0,right:25.0,top:15.0,bottom:15.0),
                             child: Text(
                               "Sign up",
